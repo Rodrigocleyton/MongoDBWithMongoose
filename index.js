@@ -28,8 +28,9 @@ const Series = mongoose.model('Serie', serieModel)
 const Filmes = mongoose.model('filmes', filmesModel)
 
 const serie = new Series ({
-    title: "Chapolin",
-    author: "Chisparito"
+    id:3,
+    title: "Sobrenatural",
+    author: "Winchester"
 }).save().then(()=>{
     console.log("Serie salva!")
 }).catch((err)=>{
@@ -37,8 +38,9 @@ const serie = new Series ({
 })
 
 const filme = new Filmes({
-    title: "twister",
-    author: "dias"
+    id:32,
+    title: "SuperMan",
+    author: "doctor sim"
 }).save().then(()=>{
     console.log("Filme salvo!")
 }).catch((err)=>{
