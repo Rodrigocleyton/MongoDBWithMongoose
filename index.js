@@ -47,6 +47,12 @@ const filme = new Filmes({
     console.log("ocorreu um erro", err)
 })
 
+Series.find({}).then(series => {
+    console.log(series)
+}).catch((err)=>{
+    console.log(err)
+})
+
 
 app.listen(port, ()=>{
     console.log("Server started port ", port)
