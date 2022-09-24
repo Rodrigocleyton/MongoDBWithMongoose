@@ -64,6 +64,12 @@ Series.find({'_id':'632e08911ac07ecb09d3134b'}).then(serie =>{
 })
 */
 
+Series.find({'id': 3}).then(serie =>{
+    console.log(serie)
+}).catch((err)=>{
+    console.log(err)
+})
+
 /*
 Series.findOne({'author': 'Winchester'}).then(author=>{
     console.log(author)
@@ -80,11 +86,13 @@ Series.findByIdAndDelete('632e114bbdbf7749b6bd1d76').then(() =>{
 })
 */
 
+/*
 Series.findByIdAndUpdate('632e08911ac07ecb09d3134b', {title: "foi feito update", author: "rodrigo"}).then(()=>{
     console.log("update realizado")
 }).catch((err)=>{
     console.log(err)
 })
+*/
 
 app.listen(port, ()=>{
     console.log("Server started port ", port)
