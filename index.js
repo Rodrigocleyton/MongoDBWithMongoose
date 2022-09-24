@@ -72,12 +72,19 @@ Series.findOne({'author': 'Winchester'}).then(author=>{
 })
 */
 
+/*
 Series.findByIdAndDelete('632e114bbdbf7749b6bd1d76').then(() =>{
     console.log("Deletado com sucesso!")
 }).catch((err)=>{
     console.log("ocorreu um erro!")
 })
+*/
 
+Series.findByIdAndUpdate('632e08911ac07ecb09d3134b', {title: "foi feito update", author: "rodrigo"}).then(()=>{
+    console.log("update realizado")
+}).catch((err)=>{
+    console.log(err)
+})
 
 app.listen(port, ()=>{
     console.log("Server started port ", port)
