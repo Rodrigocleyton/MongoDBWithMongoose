@@ -9,6 +9,8 @@ const mongoose = require('mongoose')
 const serieModel = require('./series')
 const filmesModel = require('./filmes')
 
+//const routes = require('./routes')
+
 //config body-parser
 
 app.use(bodyParser.urlencoded({extended:false}))
@@ -26,10 +28,11 @@ mongoose.connect('mongodb://localhost/cadastro_stream').then(()=>{
 
 const Series = mongoose.model('Serie', serieModel)
 const Filmes = mongoose.model('filmes', filmesModel)
+
 /*
 const serie = new Series ({
-    id:3,
-    title: "Sobrenatural",
+    id:5,
+    title: "serie nova",
     author: "Winchester"
 }).save().then(()=>{
     console.log("Serie salva!")
@@ -37,6 +40,7 @@ const serie = new Series ({
     console.log("ocorreu um erro", err)
 })
 */
+
 /*
 const filme = new Filmes({
     id:32,
@@ -48,43 +52,72 @@ const filme = new Filmes({
     console.log("ocorreu um erro", err)
 })
 */
-/*
-Series.find({}).then(series => {
-    console.log(series)
+
+//rotas provisórias
+app.get('/', (req,res)=>{
+    res.statusCode=200
+    res.send('rota home')
+})
+
+app.get('/series', (req,res)=>{
+    res.statusCode=200
+ var series= Series.find({}).then(series => {
+       res.json(series)
+    }).catch((err)=>{
+        console.log(err)
+    })
+})
+
+
+
+app.get('/serie/:id', (req, res)=>{
+ res.statusCode=200
+ var id = req.params.id
+ Series.find({'id':id}).then(serie =>{
+    res.send(serie)
 }).catch((err)=>{
     console.log(err)
 })
-*/
+
+})
 
 /*
-Series.find({'_id':'632e08911ac07ecb09d3134b'}).then(serie =>{
-    console.log(serie)
-}).catch((err)=>{
-    console.log(err)
-})
-*/
-
 Series.find({'id': 3}).then(serie =>{
     console.log(serie)
 }).catch((err)=>{
     console.log(err)
 })
+*/
 
+//não funcionou
 /*
-Series.findOne({'author': 'Winchester'}).then(author=>{
-    console.log(author)
+app.get('/serie/:author', (req, res)=>{
+    res.statusCode=200
+    var author = req.params.author
+Series.findOne({'author': author}).then(serie=>{
+    console.log(serie)
+    //res.send(serie)
 }).catch(err =>{
     console.log(err)
 })
+
+})
 */
 
-/*
-Series.findByIdAndDelete('632e114bbdbf7749b6bd1d76').then(() =>{
+
+
+app.delete('/serie/:id', (req, res)=>{
+    res.statusCode=200
+    var id = req.params.id
+Series.findByIdAndDelete(id).then(() =>{
     console.log("Deletado com sucesso!")
 }).catch((err)=>{
     console.log("ocorreu um erro!")
 })
-*/
+
+})
+
+
 
 /*
 Series.findByIdAndUpdate('632e08911ac07ecb09d3134b', {title: "foi feito update", author: "rodrigo"}).then(()=>{
