@@ -56,13 +56,19 @@ Series.find({}).then(series => {
 })
 */
 
-
+/*
 Series.find({'_id':'632e08911ac07ecb09d3134b'}).then(serie =>{
     console.log(serie)
 }).catch((err)=>{
     console.log(err)
 })
+*/
 
+Series.findOne({'author': 'Winchester'}).then(author=>{
+    console.log(author)
+}).catch(err =>{
+    console.log(err)
+})
 
 app.listen(port, ()=>{
     console.log("Server started port ", port)
