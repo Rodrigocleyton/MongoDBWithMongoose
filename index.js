@@ -26,7 +26,7 @@ mongoose.connect('mongodb://localhost/cadastro_stream').then(()=>{
 
 const Series = mongoose.model('Serie', serieModel)
 const Filmes = mongoose.model('filmes', filmesModel)
-
+/*
 const serie = new Series ({
     id:3,
     title: "Sobrenatural",
@@ -36,7 +36,8 @@ const serie = new Series ({
 }).catch((err)=>{
     console.log("ocorreu um erro", err)
 })
-
+*/
+/*
 const filme = new Filmes({
     id:32,
     title: "SuperMan",
@@ -46,9 +47,18 @@ const filme = new Filmes({
 }).catch((err)=>{
     console.log("ocorreu um erro", err)
 })
-
+*/
+/*
 Series.find({}).then(series => {
     console.log(series)
+}).catch((err)=>{
+    console.log(err)
+})
+*/
+
+
+Series.find({'_id':'632e08911ac07ecb09d3134b'}).then(serie =>{
+    console.log(serie)
 }).catch((err)=>{
     console.log(err)
 })
