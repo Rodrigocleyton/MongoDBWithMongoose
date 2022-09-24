@@ -64,11 +64,20 @@ Series.find({'_id':'632e08911ac07ecb09d3134b'}).then(serie =>{
 })
 */
 
+/*
 Series.findOne({'author': 'Winchester'}).then(author=>{
     console.log(author)
 }).catch(err =>{
     console.log(err)
 })
+*/
+
+Series.findByIdAndDelete('632e114bbdbf7749b6bd1d76').then(() =>{
+    console.log("Deletado com sucesso!")
+}).catch((err)=>{
+    console.log("ocorreu um erro!")
+})
+
 
 app.listen(port, ()=>{
     console.log("Server started port ", port)
