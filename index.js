@@ -81,15 +81,9 @@ app.get('/serie/:id', (req, res)=>{
 
 })
 
-/*
-Series.find({'id': 3}).then(serie =>{
-    console.log(serie)
-}).catch((err)=>{
-    console.log(err)
-})
-*/
 
-//não funcionou
+
+//to do
 /*
 app.get('/serie/:author', (req, res)=>{
     res.statusCode=200
@@ -104,19 +98,32 @@ Series.findOne({'author': author}).then(serie=>{
 })
 */
 
+app.post('/series', (req, res)=>{
+    const novaSerie = {
+        id:req.body.id,
+        title:req.body.title,
+        author: req.body.author
+}
+ new Series(novaSerie)
+ .save().then(()=>{
+        console.log("Serie salva!")
+    }).catch((err)=>{
+        console.log("ocorreu um erro", err)
+    })
+})
 
-
+/*não funcionou
 app.delete('/serie/:id', (req, res)=>{
     res.statusCode=200
     var id = req.params.id
-Series.findByIdAndDelete(id).then(() =>{
+Series.findByIdAndDelete({id}).then(() =>{
     console.log("Deletado com sucesso!")
 }).catch((err)=>{
     console.log("ocorreu um erro!")
 })
 
 })
-
+*/
 
 
 /*
